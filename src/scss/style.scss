@@ -1,3 +1,11 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
 $bgColor: #151c2d;
 $textColor: rgb(44, 162, 89);
 
@@ -5,40 +13,6 @@ $textColor: rgb(44, 162, 89);
   -webkit-box-shadow: 0px 5px 11px 2px rgba(0, 0, 0, 0.7);
   -moz-box-shadow: 0px 5px 11px 2px rgba(0, 0, 0, 0.7);
   box-shadow: 0px 5px 11px 2px rgba(0, 0, 0, 0.7);
-}
-%rippleEff {
-  &:after {
-    content: '';
-    height: 200%;
-    left: -230%;
-    opacity: 0;
-    position: absolute;
-    top: -20%;
-    transform: rotate(-30deg);
-    width: 500%;
-
-    background: rgba(255, 255, 255, 0.062);
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0.33) 0%,
-      rgba(255, 255, 255, 0.33) 82%,
-      rgba(255, 255, 255, 0.7) 95%,
-      rgba(255, 255, 255, 0) 100%
-    );
-  }
-
-  &:hover:after {
-    left: -50%;
-    opacity: 1;
-    top: -50%;
-    transition-duration: 0.7s, 0.7s, 0.15s;
-    transition-property: left, top, opacity;
-    transition-timing-function: ease;
-  }
-
-  &:active:after {
-    opacity: 0;
-  }
 }
 
 html,
@@ -67,24 +41,27 @@ a {
   max-width: 1170px;
   position: relative;
   width: 100%;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
   margin: 0 auto;
 }
 
 .game {
   flex: 1 0 auto;
-  padding-top: 25px;
+  margin-top: 45px;
+  margin-bottom: 45px;
 
   &_title {
     text-align: center;
     font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 45px;
+  }
+
+  &_content {
+    display: flex;
   }
 }
-
-// .card_items-row:hover .card_flip-item {
-//   transform: rotateY(180deg);
-// }
 
 .flip,
 .flip_active {
@@ -94,16 +71,17 @@ a {
 .flip_active .card_front,
 .card_back {
   background-repeat: no-repeat;
-  background-size: 70%;
+  background-size: 50%;
   background-position: center center;
 }
 
 .card {
   &_flip-item {
-    width: calc(20% - 1.2%);
-    min-height: 220px;
+    width: 22%;
+    min-height: 180px;
     background: #fdfdfd;
     transition: 0.7s;
+    margin-right: 1.5%;
     margin-left: 1.5%;
     margin-bottom: 1.5%;
     cursor: pointer;
@@ -111,8 +89,8 @@ a {
     transform-style: preserve-3d;
     position: relative;
 
-    &:nth-child(5n + 1) {
-      margin-left: 0;
+    &:nth-child(4n) {
+      margin-right: 0;
     }
 
     &:hover:not(.flip, .flip_active) {
@@ -122,9 +100,12 @@ a {
   }
 
   &_items-row {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     perspective: 1000px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   &_front {
@@ -168,4 +149,42 @@ a {
 
 .bg-card-pizza {
   background-image: url(../image/svg/015-pizza.svg);
+}
+
+.bg-card-spaguetti {
+  background-image: url(../image/svg/010-spaguetti.svg);
+}
+
+@media (max-width: 1200px) {
+  .card {
+    &_flip-item {
+      width: 22%;
+      min-height: 150px;
+      margin-right: 1.5%;
+      margin-left: 1.5%;
+      margin-bottom: 2%;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .card {
+    &_flip-item {
+      width: 47.5%;
+      min-height: 150px;
+      margin-left: 2.5%;
+      margin-right: 0;
+
+      &:nth-child(2n + 1) {
+        margin-left: auto;
+      }
+      &:nth-child(2n + 2) {
+        margin-right: auto;
+      }
+    }
+  }
+
+  .flip_active .card_front,
+  .card_back {
+    background-size: 100px;
+  }
 }

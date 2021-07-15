@@ -79,7 +79,7 @@ cardItemsRow.addEventListener('click', flipper);
 
 function addCardsToRow() {
   const cardsList = [];
-  const cardDataName = ['burger', 'pancakes', 'toast', 'ramen', 'pizza'];
+  const cardDataName = ['burger', 'pancakes', 'toast', 'ramen', 'pizza', 'spaguetti'];
 
   let count = 1;
   for (let i = 0; i < 2; i++) {
@@ -116,6 +116,9 @@ function addBackgroundToCards() {
     }
     if (card.dataset.name === 'pizza') {
       getElemAndAddClass('bg-card-pizza');
+    }
+    if (card.dataset.name === 'spaguetti') {
+      getElemAndAddClass('bg-card-spaguetti');
     }
   });
 }
