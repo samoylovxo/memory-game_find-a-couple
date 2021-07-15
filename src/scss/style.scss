@@ -1,0 +1,171 @@
+$bgColor: #151c2d;
+$textColor: rgb(44, 162, 89);
+
+%shadow {
+  -webkit-box-shadow: 0px 5px 11px 2px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 5px 11px 2px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 5px 11px 2px rgba(0, 0, 0, 0.7);
+}
+%rippleEff {
+  &:after {
+    content: '';
+    height: 200%;
+    left: -230%;
+    opacity: 0;
+    position: absolute;
+    top: -20%;
+    transform: rotate(-30deg);
+    width: 500%;
+
+    background: rgba(255, 255, 255, 0.062);
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.33) 0%,
+      rgba(255, 255, 255, 0.33) 82%,
+      rgba(255, 255, 255, 0.7) 95%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  &:hover:after {
+    left: -50%;
+    opacity: 1;
+    top: -50%;
+    transition-duration: 0.7s, 0.7s, 0.15s;
+    transition-property: left, top, opacity;
+    transition-timing-function: ease;
+  }
+
+  &:active:after {
+    opacity: 0;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  background: $bgColor;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: $textColor;
+  text-decoration: none;
+}
+
+.wrapper {
+  max-width: 1170px;
+  position: relative;
+  width: 100%;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin: 0 auto;
+}
+
+.game {
+  flex: 1 0 auto;
+  padding-top: 25px;
+
+  &_title {
+    text-align: center;
+    font-size: 2rem;
+  }
+}
+
+// .card_items-row:hover .card_flip-item {
+//   transform: rotateY(180deg);
+// }
+
+.flip,
+.flip_active {
+  transform: rotateY(180deg);
+}
+
+.flip_active .card_front,
+.card_back {
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-position: center center;
+}
+
+.card {
+  &_flip-item {
+    width: calc(20% - 1.2%);
+    min-height: 220px;
+    background: #fdfdfd;
+    transition: 0.7s;
+    margin-left: 1.5%;
+    margin-bottom: 1.5%;
+    cursor: pointer;
+    border-radius: 15px;
+    transform-style: preserve-3d;
+    position: relative;
+
+    &:nth-child(5n + 1) {
+      margin-left: 0;
+    }
+
+    &:hover:not(.flip, .flip_active) {
+      transform: scale(1.04);
+      @extend %shadow;
+    }
+  }
+
+  &_items-row {
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px;
+  }
+
+  &_front {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #262626;
+    font-size: 72px;
+    font-weight: 700;
+    transform: rotateY(0deg) translate(-50%, -50%);
+  }
+
+  &_back {
+    width: 100%;
+    height: 100%;
+    transform: rotateY(180deg);
+  }
+}
+
+.footer {
+  flex-shrink: 0;
+  text-align: center;
+  padding-bottom: 25px;
+}
+
+.bg-card-burger {
+  background-image: url(../image/svg/014-burger.svg);
+}
+
+.bg-card-pancakes {
+  background-image: url(../image/svg/016-pancakes.svg);
+}
+
+.bg-card-toast {
+  background-image: url(../image/svg/017-toast.svg);
+}
+
+.bg-card-ramen {
+  background-image: url(../image/svg/007-ramen.svg);
+}
+
+.bg-card-pizza {
+  background-image: url(../image/svg/015-pizza.svg);
+}
