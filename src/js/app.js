@@ -1,14 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-eval */
-/* eslint-disable no-loop-func */
-/* eslint-disable no-alert */
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable function-paren-newline */
-/* eslint-disable comma-dangle */
-/* eslint-disable no-plusplus */
-/* eslint-disable lines-around-directive */
-/* eslint-disable strict */
 'use strict';
 
 const cardItemsRow = document.getElementsByClassName('card_items-row')[0];
@@ -27,8 +16,6 @@ window.onload = () => {
     flipAnFlip('remove');
   }, 1500);
 };
-
-const randomSortArr = (array) => array.sort(() => Math.random() - 0.5);
 
 function isWin() {
   alert('Игра пройдена!');
